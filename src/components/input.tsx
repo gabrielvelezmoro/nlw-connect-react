@@ -1,9 +1,5 @@
 import { ComponentProps } from "react";
 
-interface InputProps extends ComponentProps<"input"> {
-  error?: boolean;
-}
-
 interface InputRootProps extends ComponentProps<"div"> {
   error?: boolean;
 }
@@ -18,7 +14,7 @@ export function InputRoot({ error = false, ...props }: InputRootProps) {
   );
 }
 
-interface InputIconProps extends ComponentProps<"span"> {}
+interface InputIconProps extends ComponentProps<"span"> { }
 
 export function InputIcon({ ...props }: InputIconProps) {
   return (
@@ -29,7 +25,7 @@ export function InputIcon({ ...props }: InputIconProps) {
   );
 }
 
-interface InputFieldProps extends ComponentProps<"input"> {}
+interface InputFieldProps extends ComponentProps<"input"> { }
 
 export function InputField({ ...props }: InputFieldProps) {
   return (
