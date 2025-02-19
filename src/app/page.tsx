@@ -1,7 +1,9 @@
 import Image from 'next/image'
 
 import logo from '../assets/Logo.svg'
-import { Radio } from 'lucide-react';
+import { ArrowRight, Mail, Radio, User } from 'lucide-react';
+import { InputIcon, InputRoot, InputField } from '@/components/input';
+import { Button } from '@/components/buttons';
 
 export default function Home() {
   return (
@@ -25,13 +27,42 @@ export default function Home() {
               </span>
             </div>
             <p className='text-gray-300 leading-relaxed text-sm md:text-base'>
-              Um evento feito por e para pessoas desenvolvedoras apaixonadas por criar soluções inovadoras
+              Um evento feito por e para pessoas desenvolvedoras apaixonadas por criar soluções inovadoras que querem entender Next com Tailwind
+              <br />
+              <br />
+              Localizado na Praça de Anita (cidade de Laguna - Santa Catarina)
               <br />
               <br />
               Dias 15 a 17 de setembro de 2025
             </p>
           </div>
-          <form action="">form</form>
+          <form className='bg-gray-700 border border-gray-600 rounded-2xl p-8 space-y-6 w-full md:max-w-[440px]'>
+            <h2 className='font-heading font-semibold text-gray-200 text-xl'>
+              Inscrição
+            </h2>
+
+            <div className='space-y-3'>
+              <InputRoot>
+                <InputIcon>
+                  <User />
+                </InputIcon>
+                <InputField type="text" placeholder="Nome completo" />
+              </InputRoot>
+
+              <InputRoot>
+                <InputIcon>
+                  <Mail />
+                </InputIcon>
+                <InputField type="email" placeholder="E-mail" />
+              </InputRoot>
+            </div>
+
+            <Button type='submit'>
+              Confirmar
+              <ArrowRight />
+
+            </Button>
+          </form>
         </div>
       </div>
 
