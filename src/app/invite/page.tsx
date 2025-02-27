@@ -6,6 +6,7 @@ import { Stats } from './stats'
 
 
 export default function InvitePage() {
+    const inviteLink = 'http:localhost:3000/invite/tururu'
     return (
         <div className="min-h-dhv flex items-center justify-between gap-16 flex-col md:flex-row">
             <div className="flex flex-col gap-10 w-full max-w-[550px]">
@@ -27,7 +28,7 @@ export default function InvitePage() {
                             Inscrições:
                         </p>
                     </div>
-                    <InviteLinkInput />
+                    <InviteLinkInput link={inviteLink} />
                     <Stats />
                 </div>
             </div>
