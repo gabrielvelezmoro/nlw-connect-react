@@ -2,8 +2,10 @@
 
 import { Button } from "@/components/buttons";
 import { InputField, InputIcon, InputRoot } from "@/components/input";
+import { subscribeToEvent } from "@/http/api";
 import { zodResolver } from "@hookform/resolvers/zod"
 import { ArrowRight, Mail, User } from "lucide-react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from 'zod'
 
@@ -13,14 +15,19 @@ const subscriptionSchema = z.object({
 })
 export function SubscriptionForm() {
 
+    const { push } = useRouter()
+    const searchParams = useSearchParams()
     type SubscriptionSchema = z.infer<typeof subscriptionSchema>
 
     const { register, handleSubmit, formState: { errors } } = useForm<SubscriptionSchema>({
         resolver: zodResolver(subscriptionSchema)
     })
 
-    function onSubscribe(data: SubscriptionSchema) {
-        console.log()
+    async function onSubscribe({ email, name }: SubscriptionSchema) {
+        const referrer = searchParams.get('referrer')
+        const { subscriberId } = await subscribeToEvent({ email, name, referrer });
+        push(`/invite/${subscriberId}`)
+
     }
     return (
         <form onSubmit={handleSubmit(onSubscribe)} className='bg-gray-700 border border-gray-600 rounded-2xl p-8 space-y-6 w-full md:max-w-[440px]'>
